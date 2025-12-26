@@ -1,6 +1,6 @@
 {
-  "name": "2048-pro-web",
-  "compatibility_date": "2025-12-15",
+  "name": "mergeblocks2048",
+  "compatibility_date": "2025-12-26",
   "assets": {
     "directory": "."
   }
