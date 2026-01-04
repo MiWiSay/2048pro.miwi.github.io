@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <!-- =========================
+         PWA Manifest (default + runtime switch)
+         ========================= -->
+    <link id="app-manifest" rel="manifest" href="./manifest.en.json">
+
+    <script>
+      (function () {
+        const lang =
+          navigator.language ||
+          (navigator.languages && navigator.languages[0]) ||
+          'en'
+
+        document.documentElement.lang = lang
+
+        const map = {
+          'zh-CN': '/manifest.zh-CN.json',
+          'zh-HK': '/manifest.zh-HK.json',
+          'zh-TW': '/manifest.zh-TW.json',
+          'zh-MO': '/manifest.zh-MO.json',
+          'zh':    '/manifest.zh-CN.json',
+
+          'de': '/manifest.de.json',
+          'es': '/manifest.es.json',
+          'fr': '/manifest.fr.json',
+          'it': '/manifest.it.json',
+          'ja': '/manifest.ja.json',
+          'ko': '/manifest.ko.json',
+          'pt': '/manifest.pt.json',
+          'ru': '/manifest.ru.json',
+          'tr': '/manifest.tr.json',
+
+          'en': '/manifest.en.json'
+        }
+
+        const href =
+          map[lang] ||
+          map[lang.split('-')[0]] ||
+          map.en
+
+        const manifestEl = document.getElementById('app-manifest')
+        if (manifestEl) {
+          manifestEl.setAttribute('href', href)
+        }
+      })()
+    </script>
+
+    <!-- =========================
+         Basic Meta
+         ========================= -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f66518" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>合合方块-2048</title>
+
+    <!-- =========================
+         Icons
+         ========================= -->
+    <link rel="icon" href="./favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
+    <!-- =========================
+         Compiled Styles (Tailwind + Fonts)
+         ========================= -->
+
+    <!-- =========================
+         Global Style Fixes
+         ========================= -->
+    <style>
+      body {
+        touch-action: none;
+        overscroll-behavior: none;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-C7NE4nDs.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DKLAnV9D.css">
+  </head>
+
+  <body class="bg-gray-50 text-gray-900 overflow-hidden h-screen w-screen selection:bg-orange-200">
+    <div id="root" class="h-full w-full"></div>
+
+    <!-- =========================
+         App Entry (Bundled)
+         ========================= -->
+
+    <!-- =========================
+         Global Error Guard
+         ========================= -->
+    <script>
+      window.onerror = function (message, source, lineno, colno, error) {
+        console.error('Global Error:', message, error)
+      }
+
+      // Polyfill for libs expecting Node env
+      window.process = { env: { NODE_ENV: 'production' } }
+    </script>
+  </body>
+</html>
